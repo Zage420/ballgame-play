@@ -10,16 +10,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
     <title>Колодец</title>
-    <script type="module" crossorigin src="./assets/index-CUfZsw3R.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-V6KWHbit.css">
+    <script type="module" crossorigin src="./assets/index-aCK6-8tE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-H42Ua5Y7.css">
   </head>
   <body>
     <div id="app">
       <canvas id="game-canvas"></canvas>
-      <div id="flash" class="hidden"></div>
+      <div id="fuse-heat" class="hidden" aria-hidden="true"></div>
 
       <div id="hud" class="hidden" aria-hidden="true">
         <div id="hud-score">0</div>
+        <div id="hud-goal" class="hidden">0/14</div>
         <div id="hud-combo" class="hidden">x2</div>
         <div id="hud-wealth">
           <i class="coin-icon" aria-hidden="true"></i>
@@ -91,11 +92,15 @@
       </div>
 
       <div id="screen-shop" class="screen hidden">
-        <div class="panel scroll">
-          <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="coins">Монеты</span>: <b id="shop-coins">0</b></p>
-          <h2 data-i18n="shop">Магазин</h2>
-          <div id="shop-root"></div>
-          <button id="btn-shop-back" class="btn primary" type="button" data-i18n="back">Назад</button>
+        <div class="panel shop-panel">
+          <div class="shop-head">
+            <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="coins">Монеты</span>: <b id="shop-coins">0</b></p>
+            <div class="shop-title-row">
+              <h2 data-i18n="shop">Магазин</h2>
+              <button id="btn-shop-back" class="btn mini primary" type="button" data-i18n="back">Назад</button>
+            </div>
+          </div>
+          <div id="shop-root" class="shop-body"></div>
         </div>
       </div>
 
