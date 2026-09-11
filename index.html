@@ -10,8 +10,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
     <title>Колодец</title>
-    <script type="module" crossorigin src="./assets/index-C3yNPWdj.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Wf0ojOxY.css">
+    <script type="module" crossorigin src="./assets/index-CkUJZaqq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bd0e1vD7.css">
   </head>
   <body>
     <div id="app">
@@ -21,7 +21,10 @@
       <div id="hud" class="hidden" aria-hidden="true">
         <div id="hud-score">0</div>
         <div id="hud-combo" class="hidden">x2</div>
-        <div id="hud-coins">0</div>
+        <div id="hud-wealth">
+          <i class="coin-icon" aria-hidden="true"></i>
+          <span id="hud-coins">0</span>
+        </div>
         <button id="btn-hop" class="hidden" type="button" data-i18n="hop">Перепрыгнуть</button>
       </div>
       <div id="combo-layer"></div>
@@ -30,7 +33,7 @@
 
       <div id="screen-menu" class="screen">
         <div class="panel wide scroll">
-          <p class="coins-line"><span data-i18n="coins">Монеты</span>: <b id="menu-coins">0</b></p>
+          <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="coins">Монеты</span>: <b id="menu-coins">0</b></p>
           <p class="eyebrow" data-i18n="eyebrow">эксперимент</p>
           <h1 data-i18n="title">Колодец</h1>
           <p class="lead" data-i18n="lead">
@@ -89,7 +92,7 @@
 
       <div id="screen-shop" class="screen hidden">
         <div class="panel scroll">
-          <p class="coins-line"><span data-i18n="coins">Монеты</span>: <b id="shop-coins">0</b></p>
+          <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="coins">Монеты</span>: <b id="shop-coins">0</b></p>
           <h2 data-i18n="shop">Магазин</h2>
           <div id="shop-root"></div>
           <button id="btn-shop-back" class="btn primary" type="button" data-i18n="back">Назад</button>
@@ -99,9 +102,16 @@
       <div id="screen-win" class="screen hidden">
         <div class="panel">
           <h2 data-i18n="won">Этаж пройден</h2>
+          <div class="chest-stage" id="chest-stage">
+            <div class="chest" id="chest">
+              <div class="chest-lid"><span class="chest-lock"></span></div>
+              <div class="chest-body"><span class="chest-glow"></span></div>
+            </div>
+            <div class="chest-flies" id="chest-flies" aria-hidden="true"></div>
+          </div>
+          <p class="chest-prize" id="chest-loot"></p>
           <p class="score-line"><span data-i18n="score">Счёт</span>: <b id="win-score">0</b></p>
-          <p class="best-line" id="chest-line"><span data-i18n="chest">Сундук</span>: <b id="chest-loot">—</b></p>
-          <p class="best-line"><span data-i18n="earned">Монет за забег</span>: <b id="win-coins">0</b></p>
+          <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="earned">Монет за забег</span>: <b id="win-coins">0</b></p>
           <button id="btn-win-menu" class="btn primary" type="button" data-i18n="menu">В меню</button>
         </div>
       </div>
@@ -111,7 +121,7 @@
           <h2 data-i18n="over">Конец</h2>
           <p class="score-line"><span data-i18n="score">Счёт</span>: <b id="dead-score">0</b></p>
           <p class="best-line"><span data-i18n="best">Рекорд</span>: <b id="dead-best">0</b></p>
-          <p class="best-line"><span data-i18n="earned">Монет за забег</span>: <b id="dead-coins">0</b></p>
+          <p class="coins-line"><i class="coin-icon" aria-hidden="true"></i><span data-i18n="earned">Монет за забег</span>: <b id="dead-coins">0</b></p>
           <button id="btn-continue" class="btn ghost hidden" type="button" data-i18n="continue">
             Продолжить · реклама
           </button>
