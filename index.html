@@ -9,28 +9,100 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Колодец</title>
-    <script type="module" crossorigin src="./assets/index-BD4zuLfz.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DYWsv8LH.css">
+    <title>Колодец</title>
+    <script type="module" crossorigin src="./assets/index-Dj-DqY_t.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CGtENwh-.css">
   </head>
   <body>
     <div id="app">
       <canvas id="game-canvas"></canvas>
+      <div id="flash" class="hidden"></div>
 
       <div id="hud" class="hidden" aria-hidden="true">
         <div id="hud-score">0</div>
+        <div id="hud-combo" class="hidden">x2</div>
+        <div id="hud-coins">0</div>
+        <button id="btn-hop" class="hidden" type="button" data-i18n="hop">Прыжок</button>
       </div>
 
       <button id="btn-sound" class="icon-btn hidden" type="button" aria-label="Sound">♪</button>
 
       <div id="screen-menu" class="screen">
-        <div class="panel">
-          <p class="eyebrow" data-i18n="eyebrow">endless</p>
+        <div class="panel wide scroll">
+          <p class="coins-line"><span data-i18n="coins">Монеты</span>: <b id="menu-coins">0</b></p>
+          <p class="eyebrow" data-i18n="eyebrow">эксперимент</p>
           <h1 data-i18n="title">Колодец</h1>
-          <p class="lead" data-i18n="lead">Крути кольца и проваливай шар в отверстие.</p>
+          <p class="lead" data-i18n="lead">
+            Крути кольца и проваливай шар в отверстие. Классика сохранена — рядом новые режимы и магазин.
+          </p>
+
+          <div class="mode-grid">
+            <button id="btn-classic" class="btn primary" type="button" data-i18n="classic">Классика</button>
+            <p class="mode-note" data-i18n="classicHint">Та самая бесконечная партия</p>
+            <div class="row">
+              <button id="btn-easy" class="btn ghost" type="button" data-i18n="easy">Лёгкий</button>
+              <button id="btn-normal" class="btn ghost" type="button" data-i18n="normal">Средний</button>
+              <button id="btn-hard" class="btn ghost" type="button" data-i18n="hard">Сложный</button>
+            </div>
+            <button id="btn-fuse" class="btn fuse" type="button" data-i18n="fuse">Запал</button>
+            <p class="mode-note" data-i18n="fuseHint">Бомбы: тап по шару или пробел — прыжок</p>
+          </div>
+
           <p class="best-line"><span data-i18n="best">Рекорд</span>: <b id="menu-best">0</b></p>
-          <button id="btn-play" class="btn primary" type="button" data-i18n="play">Играть</button>
+          <div class="row">
+            <button id="btn-shop" class="btn text" type="button" data-i18n="shop">Магазин</button>
+            <button id="btn-help" class="btn text" type="button" data-i18n="howto">Как играть</button>
+          </div>
           <p class="hint" data-i18n="hint">Свайп влево-вправо или стрелки / A D</p>
+        </div>
+      </div>
+
+      <div id="screen-help" class="screen hidden">
+        <div class="panel scroll">
+          <h2 data-i18n="helpTitle">Как это работает</h2>
+          <div class="help-block danger-help">
+            <div class="danger-swatch" aria-hidden="true"></div>
+            <h3 data-i18n="helpRedTitle">Ярко-красные плиты</h3>
+            <p data-i18n="helpRed">
+              Это опасность, не декор. Если шар приземляется на ярко-красную плиту — партия сразу кончается. Крути кольца
+              так, чтобы падать в отверстие или на обычные цветные платформы.
+            </p>
+          </div>
+          <h3 data-i18n="helpClassicTitle">Классика</h3>
+          <p data-i18n="helpClassic">
+            Бесконечный колодец. За каждый этаж — 100 очков. Если пролетаешь несколько этажей подряд, шар разгоняется, а
+            очки за этаж растут: 100, 200, 300…
+          </p>
+          <h3 data-i18n="helpFuseTitle">Режим «Запал»</h3>
+          <p data-i18n="helpFuse">
+            На кольцах лежат бомбы — те же ярко-красные плиты. Наехал — взрыв. Их можно перепрыгнуть: нажми на шар,
+            кнопку «Прыжок» или пробел на компьютере.
+          </p>
+          <h3 data-i18n="helpShopTitle">Монеты и скины</h3>
+          <p data-i18n="helpShop">
+            Монеты капают за игру, этажи и достижения. Главная косметика — в магазине. Сундук после этажей даёт более
+            простые скины.
+          </p>
+          <button id="btn-help-back" class="btn primary" type="button" data-i18n="back">Назад</button>
+        </div>
+      </div>
+
+      <div id="screen-shop" class="screen hidden">
+        <div class="panel scroll">
+          <p class="coins-line"><span data-i18n="coins">Монеты</span>: <b id="shop-coins">0</b></p>
+          <h2 data-i18n="shop">Магазин</h2>
+          <div id="shop-root"></div>
+          <button id="btn-shop-back" class="btn primary" type="button" data-i18n="back">Назад</button>
+        </div>
+      </div>
+
+      <div id="screen-win" class="screen hidden">
+        <div class="panel">
+          <h2 data-i18n="won">Этаж пройден</h2>
+          <p class="score-line"><span data-i18n="score">Счёт</span>: <b id="win-score">0</b></p>
+          <p class="best-line" id="chest-line"><span data-i18n="chest">Сундук</span>: <b id="chest-loot">—</b></p>
+          <p class="best-line"><span data-i18n="earned">Монет за забег</span>: <b id="win-coins">0</b></p>
+          <button id="btn-win-menu" class="btn primary" type="button" data-i18n="menu">В меню</button>
         </div>
       </div>
 
@@ -39,6 +111,7 @@
           <h2 data-i18n="over">Конец</h2>
           <p class="score-line"><span data-i18n="score">Счёт</span>: <b id="dead-score">0</b></p>
           <p class="best-line"><span data-i18n="best">Рекорд</span>: <b id="dead-best">0</b></p>
+          <p class="best-line"><span data-i18n="earned">Монет за забег</span>: <b id="dead-coins">0</b></p>
           <button id="btn-continue" class="btn ghost hidden" type="button" data-i18n="continue">
             Продолжить · реклама
           </button>
@@ -48,6 +121,6 @@
       </div>
     </div>
 
-    <script src="/sdk.js"></script>
+    <script src="/sdk.js"></script>
   </body>
 </html>
