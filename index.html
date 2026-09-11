@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Колодец</title>
+    <script type="module" crossorigin src="./assets/index-5w1N9YEj.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DYWsv8LH.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+
+      <div id="hud" class="hidden" aria-hidden="true">
+        <div id="hud-score">0</div>
+      </div>
+
+      <button id="btn-sound" class="icon-btn hidden" type="button" aria-label="Sound">♪</button>
+
+      <div id="screen-menu" class="screen">
+        <div class="panel">
+          <p class="eyebrow" data-i18n="eyebrow">endless</p>
+          <h1 data-i18n="title">Колодец</h1>
+          <p class="lead" data-i18n="lead">Крути кольца и проваливай шар в отверстие.</p>
+          <p class="best-line"><span data-i18n="best">Рекорд</span>: <b id="menu-best">0</b></p>
+          <button id="btn-play" class="btn primary" type="button" data-i18n="play">Играть</button>
+          <p class="hint" data-i18n="hint">Свайп влево-вправо или стрелки / A D</p>
+        </div>
+      </div>
+
+      <div id="screen-dead" class="screen hidden">
+        <div class="panel">
+          <h2 data-i18n="over">Конец</h2>
+          <p class="score-line"><span data-i18n="score">Счёт</span>: <b id="dead-score">0</b></p>
+          <p class="best-line"><span data-i18n="best">Рекорд</span>: <b id="dead-best">0</b></p>
+          <button id="btn-continue" class="btn ghost hidden" type="button" data-i18n="continue">
+            Продолжить · реклама
+          </button>
+          <button id="btn-again" class="btn primary" type="button" data-i18n="again">Играть снова</button>
+          <button id="btn-menu" class="btn text" type="button" data-i18n="menu">В меню</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/sdk.js"></script>
+  </body>
+</html>
